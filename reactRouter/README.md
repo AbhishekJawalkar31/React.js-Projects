@@ -1,16 +1,88 @@
-# React + Vite
+# React Router Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This project is a small React + Vite application that demonstrates client-side routing using `react-router-dom`. It includes a shared layout, multiple pages, and a dynamic user route, making it a practical example of how route-based navigation works in a React app.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Client-side routing with React Router
+- Shared layout using `Header` and `Footer`
+- Navigation with `Link` and `NavLink`
+- Dynamic route parameter support like `/user/:userid`
+- Example GitHub profile fetch using the GitHub API
+- Tailwind CSS-based styling
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- React Router DOM
+- Vite
+- Tailwind CSS
 
-## Expanding the Oxlint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+reactRouter/
+├── index.html
+├── package.json
+├── src/
+│   ├── App.jsx
+│   ├── Layout.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   └── components/
+│       ├── About/
+│       ├── Contact/
+│       ├── Footer/
+│       ├── Github/
+│       ├── Header/
+│       ├── Home/
+│       └── User/
+└── README.md
+```
+
+## Routes
+
+- `/` - Home page
+- `/about` - About page
+- `/contact` - Contact page
+- `/user/:userid` - User details page
+- `/github` - GitHub profile information page
+
+## Getting Started
+
+1. Open a terminal in the project folder.
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open the local URL shown in the terminal, usually:
+
+```bash
+http://localhost:5173
+```
+
+## Available Scripts
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
+
+- `npm run dev` - starts the Vite development server
+- `npm run build` - builds the project for production
+- `npm run preview` - previews the production build locally
+- `npm run lint` - runs the linter
+
+## Notes
+
+The app uses `createBrowserRouter` and `createRoutesFromElements` in `src/main.jsx` to define the route configuration. The `Layout` component wraps all pages so the header and footer remain consistent across navigation.
