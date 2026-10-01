@@ -1,8 +1,36 @@
 import React from 'react'
+import { useState } from 'react' 
 
 function TaskList() {
 
-    const taskList = [
+    // toggleTask() - toggle checkbox
+
+    function toggleTask(id) {
+        const updatedTasks = tasks.map((task) => {
+            if(task.id === id) {
+                return {
+                    ...task,
+                    completed: !task.completed
+                }
+            }
+
+            return task
+        })
+
+        setTasks(updatedTasks)
+    }
+
+    // deleteTask() - delete task
+    
+    function deleteTask(id) {
+        const updatedTasks = tasks.filter((task) => {
+            return task.id !== id
+        })
+
+        setTasks(updatedTasks)
+    }
+
+    const [tasks, setTasks] = useState([
         {
             id: 1,
             text: "Complete React project",
@@ -20,21 +48,21 @@ function TaskList() {
             text: "Build Task Manager",
             completed: true
         }
-    ]
+    ])
 
   return (
     <>
-        {taskList.map((task) => {
+        {tasks.map((task) => {
             return (
-                <>
-                    <input type='checkbox' checked={task.completed}/>
+                <div key={task.id}>
+                    <input type='checkbox' checked={task.completed} onChange={() => toggleTask(task.id)}/>
 
-                    <div key={task.id}>
+                    <div>
                         {task.text}
                     </div>
 
-                    <button>Delete</button>
-                </>
+                    <button onClick={() => deleteTask(task.id)}>Delete</button>
+                </div>
             )
         })}
     </>
