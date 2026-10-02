@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react' 
 
-function TaskList() {
+function TaskList({tasks, setTasks}) {
 
     // toggleTask() - toggle checkbox
 
@@ -29,26 +29,6 @@ function TaskList() {
 
         setTasks(updatedTasks)
     }
-
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            text: "Complete React project",
-            completed: true
-        },
-
-        {
-            id: 2,
-            text: "Learn useState",
-            completed: true
-        },
-
-        {
-            id: 3,
-            text: "Build Task Manager",
-            completed: true
-        }
-    ])
 
   return (
     <>
