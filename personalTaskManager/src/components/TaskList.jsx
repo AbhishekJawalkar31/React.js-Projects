@@ -32,8 +32,10 @@ function TaskList({tasks, setTasks}) {
 
   return (
     <>
-        {tasks.map((task) => {
-            return (
+        {tasks.length === 0 ? (
+            <p>No tasks found.</p>
+        ) : (
+            tasks.map((task) => (
                 <div key={task.id}>
                     <input type='checkbox' checked={task.completed} onChange={() => toggleTask(task.id)}/>
 
@@ -43,8 +45,8 @@ function TaskList({tasks, setTasks}) {
 
                     <button onClick={() => deleteTask(task.id)}>Delete</button>
                 </div>
-            )
-        })}
+            ))
+        )}
     </>
   )
 }

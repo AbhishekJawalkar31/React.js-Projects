@@ -2,31 +2,23 @@ import './App.css'
 import Header from './components/Header'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
-import { useState } from 'react'
+import Settings from './components/Settings'
+import { useEffect, useState } from 'react'
 
 function App() {
 
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            text: "Complete React project",
-            completed: true
-        },
+    const [tasks, setTasks] = useState(() => {
+      const savedTasks = localStorage.getItem('tasks')
 
-        {
-            id: 2,
-            text: "Learn useState",
-            completed: true
-        },
+      return savedTasks ? JSON.parse(savedTasks) : []
+    })
 
-        {
-            id: 3,
-            text: "Build Task Manager",
-            completed: true
-        }
-    ])
+    useEffect(() => {
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+    }, [tasks])
 
     const [filter, setFilter] = useState("all")
+    const [search, setSearch] = useState("")
 
     let filteredTasks = tasks
 
@@ -38,6 +30,8 @@ function App() {
       filteredTasks = tasks.filter((task) => task.completed)
     }
 
+    filteredTasks = filteredTasks.filter((task) => task.text.toLowerCase().includes(search.toLowerCase()))
+
   return (
     <>
       <Header />
@@ -47,9 +41,15 @@ function App() {
         <button onClick={() => setFilter("all")}>All</button>
         <button onClick={() => setFilter("active")}>Active</button>
         <button onClick={() => setFilter("completed")}>Completed</button>
+
+        <input type='text' placeholder='Search tasks' value={search} onChange={(event) => setSearch(event.target.value)}></input>
       </div>
 
+      <Settings setTasks={setTasks}/>
+
       <TaskList tasks={filteredTasks} setTasks={setTasks}/>
+
+      <p>Task count: {tasks.length}</p>
     </>
   )
 }
