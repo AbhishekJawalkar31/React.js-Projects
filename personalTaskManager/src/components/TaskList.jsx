@@ -1,6 +1,3 @@
-import React from 'react'
-import { useState } from 'react' 
-
 function TaskList({tasks, setTasks}) {
 
     // toggleTask() - toggle checkbox
@@ -33,17 +30,17 @@ function TaskList({tasks, setTasks}) {
   return (
     <>
         {tasks.length === 0 ? (
-            <p>No tasks found.</p>
+            <p className="empty-state">No tasks found.</p>
         ) : (
             tasks.map((task) => (
-                <div key={task.id}>
-                    <input type='checkbox' checked={task.completed} onChange={() => toggleTask(task.id)}/>
+                <div className="task-item" key={task.id}>
+                    <input className="task-checkbox" type='checkbox' checked={task.completed} onChange={() => toggleTask(task.id)}/>
 
-                    <div>
+                    <div className="task-text">
                         {task.text}
                     </div>
 
-                    <button onClick={() => deleteTask(task.id)}>Delete</button>
+                    <button className="delete-btn" onClick={() => deleteTask(task.id)}>Delete</button>
                 </div>
             ))
         )}

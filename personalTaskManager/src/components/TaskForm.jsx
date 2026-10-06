@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react'
 
 // TaskForm() - Adds new task
@@ -23,12 +22,12 @@ function TaskForm({setTasks}) {
   }
 
   return (
-    <form onSubmit={(event) => handleSubmit(event)}>
-        <input type="text" placeholder='Enter a new task...' value={inputValue} onChange={(event) => {
+    <form className="task-form" onSubmit={(event) => handleSubmit(event)}>
+        <input className="task-input" type="text" placeholder='Enter a new task...' value={inputValue} onChange={(event) => {
           setInputValue(event.target.value)
         }}/>
 
-        <button>
+        <button className="add-btn">
           Add Task
         </button>
     </form>

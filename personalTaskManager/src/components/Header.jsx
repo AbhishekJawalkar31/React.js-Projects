@@ -2,12 +2,15 @@ import React from 'react'
 
 function Header() {
   return (
-    <header>
-        <h1>Personal Task Manager</h1>
+    <header className="header">
+      <div className="header-content">
+        <h1>Task Manager</h1>
 
-        <button>Settings</button>
-    </header>
-
+        <button className="settings-btn">
+          ⚙ Settings
+        </button>
+      </div>
+    </header> 
   )
 }
 

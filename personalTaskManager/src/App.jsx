@@ -33,24 +33,29 @@ function App() {
     filteredTasks = filteredTasks.filter((task) => task.text.toLowerCase().includes(search.toLowerCase()))
 
   return (
-    <>
-      <Header />
-      <TaskForm setTasks={setTasks}/>
+      <div className="app">
+        <Header />
 
-      <div>
-        <button onClick={() => setFilter("all")}>All</button>
-        <button onClick={() => setFilter("active")}>Active</button>
-        <button onClick={() => setFilter("completed")}>Completed</button>
+        <main className='task-manager'>
+          <TaskForm setTasks={setTasks}/>
 
-        <input type='text' placeholder='Search tasks' value={search} onChange={(event) => setSearch(event.target.value)}></input>
+          <div className='task-controls'>
+            <filter-buttons>
+              <button onClick={() => setFilter("all")}>All</button>
+              <button onClick={() => setFilter("active")}>Active</button>
+              <button onClick={() => setFilter("completed")}>Completed</button>
+            </filter-buttons>
+
+            <input className='search-input' type='text' placeholder='Search tasks' value={search} onChange={(event) => setSearch(event.target.value)}></input>
+          </div>
+
+            <Settings setTasks={setTasks}/>
+
+            <p className='task-count'>Task count: {tasks.length}</p>
+
+            <TaskList tasks={filteredTasks} setTasks={setTasks}/>
+        </main>
       </div>
-
-      <Settings setTasks={setTasks}/>
-
-      <TaskList tasks={filteredTasks} setTasks={setTasks}/>
-
-      <p>Task count: {tasks.length}</p>
-    </>
   )
 }
 

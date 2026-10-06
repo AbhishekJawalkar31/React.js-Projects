@@ -1,12 +1,15 @@
-import React from 'react'
-
 function Settings({ setTasks }) {
   return (
-    <>
-        <div>Settings</div>
+    <div className="settings">
+      <h2>Settings</h2>
 
-        <button onClick={() => setTasks([])}>Clear All Tasks</button>
-    </>
+      <button
+        className="clear-btn"
+        onClick={() => setTasks([])}
+      >
+        Clear All Tasks
+      </button>
+    </div>
   )
 }
 
