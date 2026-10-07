@@ -1,0 +1,21 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.product-card img {
+  width: 100%;
+}
+
+.product-card button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
