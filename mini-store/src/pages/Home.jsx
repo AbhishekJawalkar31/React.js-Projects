@@ -1,7 +1,7 @@
 import products from "../data/products"
 import ProductCard from "../components/ProductCard"
 
-function Home() {
+function Home({ Navbar }) {
   return (
     <div className="product-grid">
         {products.map((product) => (
