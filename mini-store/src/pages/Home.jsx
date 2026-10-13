@@ -6,9 +6,9 @@ function Home({ Navbar }) {
     <div className="product-grid">
         {products.map((product) => (
             <ProductCard
-                key={product.id}
-                id={product.id}
-                product={product}
+                key = {product.id}
+                id = {product.id}
+                product = {product}
             />
         ))}
     </div>
