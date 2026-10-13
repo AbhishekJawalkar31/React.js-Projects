@@ -2,9 +2,9 @@ import { CartContext } from "../context/CartContext"
 import { useContext } from "react"
 
 function Cart() {
-    const { cart } = useContext(CartContext)
+    const { cart, increaseQuantity, decreaseQuantity } = useContext(CartContext)
 
-    const totalPrice = cart.reduce(
+    const totalPrice = cart.reduce (
         (sum, item) => sum + item.product.price * item.quantity,
         0
     )
@@ -16,6 +16,7 @@ function Cart() {
     return (
         <div>
             <h1>Your Cart!</h1>
+
             {cart.map((item) => (
                 <div key={item.product.id}>
                     <img src={item.product.image} alt={item.product.name} />
@@ -25,7 +26,11 @@ function Cart() {
                         <p>{item.product.category}</p>
                         <p>{item.product.description}</p>
                         <p>₹{item.product.price}</p>
-                        <p>Quantity: {item.quantity}</p>
+                        <p>Quantity: 
+                            <button onClick={() => increaseQuantity(item.product.id)}>+</button> 
+                                {item.quantity} 
+                            <button onClick={() => decreaseQuantity(item.product.id)}>-</button>
+                        </p>
                     </div>
                 </div>
             ))}

@@ -20,9 +20,25 @@ function CartProvider({ children }) {
         return [...prevCart, { product, quantity: 1 }]
       })
     }
+
+    function increaseQuantity(productId) {
+      setCart((prevCart) => {
+        return prevCart.map((item) => item.product.id === productId 
+        ? {...item, quantity: item.quantity + 1} 
+        : item) 
+      })
+    }
+
+    function decreaseQuantity(productId) {
+      setCart((prevCart) => {
+        return prevCart.map((item) => item.product.id === productId && item.quantity > 1
+        ? {...item, quantity: item.quantity - 1} 
+        : item) 
+      })
+    }
     
   return ( 
-    <CartContext.Provider value={{ cart, setCart, addToCart }} >
+    <CartContext.Provider value={{ cart, setCart, addToCart, increaseQuantity, decreaseQuantity }} >
       {children}
     </CartContext.Provider>
   )
