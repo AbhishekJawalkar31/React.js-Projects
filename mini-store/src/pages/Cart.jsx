@@ -2,7 +2,7 @@ import { CartContext } from "../context/CartContext"
 import { useContext } from "react"
 
 function Cart() {
-    const { cart, increaseQuantity, decreaseQuantity } = useContext(CartContext)
+    const { cart, increaseQuantity, decreaseQuantity, removeFromCart } = useContext(CartContext)
 
     const totalPrice = cart.reduce (
         (sum, item) => sum + item.product.price * item.quantity,
@@ -31,6 +31,7 @@ function Cart() {
                                 {item.quantity} 
                             <button onClick={() => decreaseQuantity(item.product.id)}>-</button>
                         </p>
+                        <button onClick={() => removeFromCart(item.product.id)}>Delete</button>
                     </div>
                 </div>
             ))}
