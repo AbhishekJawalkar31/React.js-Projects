@@ -10,8 +10,10 @@ function ThemeProvider({ children }) {
     }
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }} >
-            {children}
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <div className="store-app" data-theme={theme}>
+                {children}
+            </div>
         </ThemeContext.Provider>
     )
 }

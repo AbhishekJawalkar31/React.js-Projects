@@ -6,21 +6,27 @@ function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext)
 
   return (
-    <>
-      <h1>MiniStore</h1>
+    <header className="store-header">
+      <h1 className="store-title">MiniStore</h1>
 
-      <Link to='/'>
-          <p>Home</p>
-      </Link>
+      <nav className="store-navigation" aria-label="Main navigation">
+        <Link to='/'>
+            <p>Home</p>
+        </Link>
 
-      <Link to='/cart'>
-          <p>Cart</p>
-      </Link>
+        <Link to='/cart'>
+            <p>Cart</p>
+        </Link>
+      </nav>
 
-      <button onClick={() => toggleTheme()}>
+      <button
+        className="theme-toggle"
+        type="button"
+        onClick={toggleTheme}
+      >
         {theme === 'light' ? 'Dark Theme' : 'Light Theme'}
       </button>
-    </>
+    </header>
   )
 }
 
