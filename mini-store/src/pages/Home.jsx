@@ -1,13 +1,20 @@
 import products from "../data/products"
 import ProductCard from "../components/ProductCard"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 function Home() {
   const [search, setSearch] = useState("")
   const [category, setCategory] = useState("All")
   const [sortOrder, setSortOrder] = useState("Default")
+  const searchRef = useRef(null)
   let filteredProducts = []
   let sortedProducts = []
+
+  useEffect(() => {
+    if(searchRef.current) {
+      searchRef.current.focus()
+    }
+  }, [])
 
   filteredProducts = products.filter((product) => (category === "All" || product.category === category) 
     && product.name.toLowerCase().includes(search.toLowerCase()))
@@ -20,13 +27,11 @@ function Home() {
     if(sortOrder === "highToLow") {
       return b.price - a.price
     }
-
-    return 0
   })
 
   return (
     <>
-      <input type="text" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)}/>
+      <input ref={searchRef} type="text" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)}/>
 
       <p>Categories</p>
       <button onClick={() => setCategory("All")}>All</button>
