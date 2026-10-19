@@ -1,16 +1,44 @@
-# React + Vite
+# MiniStore
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small React storefront for browsing products, viewing product details, and managing a shopping cart.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Browse six sample products by category
+- Search products by name and sort by price
+- View product details and add products to the cart
+- Increase or decrease cart quantities, remove items, and view the total
+- Switch between light and dark themes
+- Persist the cart and theme preference in browser local storage
 
-## React Compiler
+## Built with
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React, React Router, JavaScript, and Vite.
 
-## Expanding the Oxlint configuration
+## Run locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+From this directory, install dependencies and start the development server:
+
+```bash
+npm install
+npm run dev
+```
+
+Open the local URL printed by Vite.
+
+## Available scripts
+
+```bash
+npm run dev      # Start the development server
+npm run build    # Create a production build
+npm run preview  # Preview the production build
+npm run lint     # Run Oxlint
+```
+
+## Routes
+
+- `/` — Product catalogue
+- `/product/:id` — Product details
+- `/cart` — Shopping cart
+
+Products are defined in the project and use placeholder images. The cart and theme preference are stored in the browser; no backend or checkout service is included.
